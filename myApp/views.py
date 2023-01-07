@@ -47,7 +47,7 @@ def register(request):
             if len(new_pwd) > 16 or len(new_un) > 16:
                 return JsonResponse({"result": 0, "message": "Password or UerName out of length!"})
             else:
-                if (-2147483648 <= new_uid <= 2147483648) and MyUser.objects.filter(uid=new_uid).count() == 0:
+                if (-2147483648 <= int(new_uid) <= 2147483648) and MyUser.objects.filter(uid=new_uid).count() == 0:
                     MyUser(uid=new_uid, upwd=new_pwd, un=new_un).save()
                     return JsonResponse({"result": 1, "message": "注册成功！"})
                 else:
