@@ -10,7 +10,26 @@ from django.db import models
 
 # Create your models here.
 
-class MyUser(models.Model):
-    uid = models.IntegerField(primary_key=True)
-    upwd = models.CharField(max_length=16)
-    un = models.CharField(max_length=16)
+class User(models.Model):
+    id = models.IntegerField(primary_key=True)
+    password = models.CharField(max_length=16)
+    name = models.TextField(max_length=16)
+    avatar = models.ImageField(null=True)
+
+
+class Chapter(models.Model):
+    id = models.CharField(primary_key=True, max_length=16)
+    top = models.CharField(max_length=16)
+    name = models.TextField(max_length=16)
+    user = models.CharField(max_length=16)
+
+
+class Question(models.Model):
+    id = models.CharField(primary_key=True, max_length=16)
+    name = models.TextField(max_length=16)
+    user = models.CharField(max_length=16)
+    chapter = models.CharField(max_length=16)
+    question_description = models.TextField(max_length=128, null=True)
+    answer_description = models.TextField(max_length=128, null=True)
+    img_question = models.ImageField(null=True)
+    img_answer = models.ImageField(null=True)

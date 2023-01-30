@@ -1,4 +1,4 @@
-class Chapter:
+class MyChapter:
     def __init__(self, chapter_id, chapter_name, chapter_top, chapter_user):
         self.id = chapter_id
         self.name = chapter_name
@@ -22,6 +22,6 @@ class Chapter:
 
 
 if __name__ == '__main__':
-    instance = Chapter(0, "new chapter", 0, 0)
-    instance.add_child(Chapter(1, "children", 0, 0)).add_child(Chapter(2, "children", 0, 0))
+    instance = MyChapter(0, "new chapter", 0, 0)
+    instance.add_child(MyChapter(1, "children", 0, 0)).add_child(MyChapter(2, "children", 0, 0))
     print(instance.toJson())
