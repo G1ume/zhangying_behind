@@ -35,6 +35,31 @@ def main(request):
     pass
 
 
+def _analyse_select_info(select_info: str):
+    tmp = select_info.split(";")
+    result = []
+    for item in tmp:
+        result.append(item.split(","))
+    return result
+
+
+def test(request):
+    if request.method == 'POST':
+        # request.POST.get('uid')
+        selectInfo = _analyse_select_info(request.POST.get('select'))
+        # print(selectInfo)
+        return JsonResponse({"result": 0, "message": selectInfo})
+    return JsonResponse({"result": 1, "message": "Wrong Request Method: " + request.method})
+
+
+def get_qlist(request):
+    if request.method == 'POST':
+
+        pass
+    else:
+        return JsonResponse({"result": 1, "message": "Wrong Request Method: " + request.method})
+
+
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
