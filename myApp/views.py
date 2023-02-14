@@ -17,8 +17,6 @@ def main(request):
     pass
 
 
-
-
 def test(request):
     if request.method == 'POST':
         # request.POST.get('uid')
@@ -29,9 +27,6 @@ def test(request):
     return err.response()
 
 
-
-
-
 def get_qlist(request):
     if request.method == 'POST':
 
@@ -39,4 +34,3 @@ def get_qlist(request):
     else:
         err = RequestMethodErr(request.POST.get("uid"), sys._getframe().f_code.co_name, request.method)
         return err.response()
-
